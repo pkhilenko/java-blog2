@@ -1,7 +1,6 @@
 package blog2.service;
 
 import blog2.dao.UserDao;
-import blog2.dao.UserDaoImpl;
 import blog2.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,19 +25,19 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public void saveUser(User theUser) {
-        userDao.saveUser(theUser);
+    public void saveUser(User user) {
+        userDao.saveUser(user);
     }
 
     @Override
     @Transactional
-    public User getUser(long theId) {
-        return userDao.getUser(theId);
+    public User getUser(long id) {
+        return userDao.getUser(id);
     }
 
     @Override
     @Transactional
-    public void deleteUser(long theId) {
-        userDao.deleteUser(theId);
+    public void deleteUser(long id) {
+        userDao.deleteUser(id);
     }
 }

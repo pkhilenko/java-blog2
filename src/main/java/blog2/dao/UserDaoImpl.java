@@ -29,22 +29,22 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void saveUser(User theUser) {
+    public void saveUser(User user) {
         Session currentSession = sessionFactory.getCurrentSession();
-        currentSession.saveOrUpdate(theUser);
+        currentSession.saveOrUpdate(user);
     }
 
     @Override
-    public User getUser(long theId) {
+    public User getUser(long id) {
         Session currentSession = sessionFactory.getCurrentSession();
-        User theUser = currentSession.get(User.class, theId);
-        return theUser;
+        User user = currentSession.get(User.class, id);
+        return user;
     }
 
     @Override
-    public void deleteUser(long theId) {
+    public void deleteUser(long id) {
         Session session = sessionFactory.getCurrentSession();
-        User user = session.byId(User.class).load(theId);
+        User user = session.byId(User.class).load(id);
         session.delete(user);
     }
 

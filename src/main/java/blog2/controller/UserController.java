@@ -16,9 +16,9 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/user")
-    public String listCars(Model theModel) {
-        List<User> theUser = userService.getUsers();
-        theModel.addAttribute("users", theUser);
+    public String listCars(Model model) {
+        List<User> users = userService.getUsers();
+        model.addAttribute("users", users);
         return "list-users";
     }
 

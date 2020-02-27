@@ -16,7 +16,7 @@
 <body>
 <div class="container">
     <div class="col-md-offset-1 col-md-10 mt-5">
-        <input type="button" value="Add User" onclick="window.location.href='/admin/showForm'; return false;"
+        <input type="button" value="Add User" onclick="window.location.href='/admin/showForm';"
                class="btn btn-primary" />
         <hr />
         <br/>

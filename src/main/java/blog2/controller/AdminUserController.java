@@ -26,28 +26,28 @@ public class AdminUserController {
     }
 
     @GetMapping("/showForm")
-    public String showFormForAdd(Model theModel) {
-        User theUser = new User();
-        theModel.addAttribute("user", theUser);
+    public String showFormForAdd(Model model) {
+        User user = new User();
+        model.addAttribute("user", user);
         return "admin-user-form";
     }
 
     @PostMapping("/saveUser")
-    public String saveCar(@ModelAttribute("user") User theUser) {
-        userService.saveUser(theUser);
+    public String saveCar(@ModelAttribute("user") User user) {
+        userService.saveUser(user);
         return "redirect:/admin/user";
     }
 
     @GetMapping("/updateForm")
-    public String showFormForUpdate(@RequestParam("userId") long theId, Model theModel) {
-        User theUser = userService.getUser(theId);
-        theModel.addAttribute("user", theUser);
+    public String showFormForUpdate(@RequestParam("userId") long id, Model model) {
+        User user = userService.getUser(id);
+        model.addAttribute("user", user);
         return "admin-user-form";
     }
 
     @GetMapping("/delete")
-    public String deleteCar(@RequestParam("userId") long theId) {
-        userService.deleteUser(theId);
+    public String deleteCar(@RequestParam("userId") long id) {
+        userService.deleteUser(id);
         return "redirect:/admin/user";
     }
 }
