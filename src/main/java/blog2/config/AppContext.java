@@ -17,7 +17,6 @@ import java.util.Properties;
 @PropertySource("classpath:db.properties")
 @EnableTransactionManagement
 public class AppContext {
-
     private Environment environment;
 
     @Autowired
