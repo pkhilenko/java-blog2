@@ -7,9 +7,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Spring MVC</title>
-    <link href="<c:url value="/src/main/webapp/static/css/bootstrap.min.css" />" rel="stylesheet">
-    <script src="<c:url value="/src/main/webapp/static/js/jquery-3.4.1.min.js" />"></script>
-    <script src="<c:url value="/src/main/webapp/static/js/bootstrap.min.js" />"></script>
+    <link href="<c:url value="/resources/static/css/bootstrap.min.css" />" rel="stylesheet">
+    <script src="<c:url value="/resources/static/js/jquery-3.4.1.min.js" />"></script>
+    <script src="<c:url value="/resources/static/js/bootstrap.min.js" />"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
@@ -23,8 +23,7 @@
                 <div class="panel-title">Add User</div>
             </div>
             <div class="panel-body">
-                <form:form action="saveUser" cssClass="form-horizontal"
-                           method="post" modelAttribute="user">
+                <form:form action="saveUser" cssClass="form-horizontal" method="post" modelAttribute="user">
                     <form:hidden path="id"/>
 
                     <div class="form-group">

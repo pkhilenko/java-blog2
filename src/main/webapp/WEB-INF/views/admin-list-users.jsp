@@ -7,11 +7,10 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>list user</title>
-    <link href="<c:url value="/src/main/webapp/static/css/bootstrap.min.css" />" rel="stylesheet">
-    <script src="<c:url value="/src/main/webapp/static/js/jquery-3.4.1.min.js" />"></script>
-    <script src="<c:url value="/src/main/webapp/static/js/bootstrap.min.js" />"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="<c:url value="/resources/static/css/bootstrap.min.css" />" rel="stylesheet">
+    <script src="<c:url value="/resources/static/js/jquery-3.4.1.min.js" />"></script>
+    <script src="<c:url value="/resources/static/js/bootstrap.min.js" />"></script>
+
 </head>
 
 <body>
@@ -37,19 +36,19 @@
                         <th>Action</th>
                     </tr>
 
-                    <c:forEach var="tempUser" items="${users}">
+                    <c:forEach var="user" items="${users}">
                         <c:url var="updateLink" value="updateForm">
-                            <c:param name="userId" value="${tempUser.id}" />
+                            <c:param name="userId" value="${user.id}" />
                         </c:url>
                         <c:url var="deleteLink" value="delete">
-                            <c:param name="userId" value="${tempUser.id}" />
+                            <c:param name="userId" value="${user.id}" />
                         </c:url>
                         <tr>
-                            <td>${tempUser.name}</td>
-                            <td>${tempUser.email}</td>
-                            <td>${tempUser.country}</td>
+                            <td>${user.name}</td>
+                            <td>${user.email}</td>
+                            <td>${user.country}</td>
                             <td>
-                                <c:forEach var="tempRole" items="${tempUser.roles}">
+                                <c:forEach var="tempRole" items="${user.roles}">
                                     <span>${tempRole} </span>
                                 </c:forEach>
                             </td>

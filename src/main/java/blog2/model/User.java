@@ -31,23 +31,6 @@ public class User {
     public User() {
     }
 
-    public User(String name, String email, String password, String country, Set<Role> roles) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.country = country;
-        this.roles = roles;
-    }
-
-    public User(Long id, String name, String email, String password, String country, Set<Role> roles) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.country = country;
-        this.roles = roles;
-        this.id = id;
-    }
-
     public Long getId() {
         return id;
     }

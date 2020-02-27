@@ -47,4 +47,5 @@ public class UserDaoImpl implements UserDao {
         User user = session.byId(User.class).load(theId);
         session.delete(user);
     }
+
 }
