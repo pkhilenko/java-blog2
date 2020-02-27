@@ -18,8 +18,12 @@ import java.util.Properties;
 @EnableTransactionManagement
 public class AppContext {
 
-    @Autowired
     private Environment environment;
+
+    @Autowired
+    public AppContext(Environment environment) {
+        this.environment = environment;
+    }
 
     @Bean
     public LocalSessionFactoryBean sessionFactory() {
