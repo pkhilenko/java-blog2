@@ -14,8 +14,13 @@ import java.util.List;
 @RequestMapping("/admin")
 public class AdminUserController {
 
-    @Autowired
+
     private UserService userService;
+
+    @Autowired
+    public AdminUserController(UserService userService){
+        this.userService = userService;
+    }
 
     @GetMapping("/user")
     public ModelAndView listCars() {
