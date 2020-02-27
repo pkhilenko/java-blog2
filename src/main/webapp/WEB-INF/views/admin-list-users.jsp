@@ -48,8 +48,8 @@
                             <td>${user.email}</td>
                             <td>${user.country}</td>
                             <td>
-                                <c:forEach var="tempRole" items="${user.roles}">
-                                    <span>${tempRole} </span>
+                                <c:forEach var="role" items="${user.roles}">
+                                    <span>${role} </span>
                                 </c:forEach>
                             </td>
                             <td>
