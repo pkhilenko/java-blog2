@@ -23,18 +23,18 @@ public class AdminUserController {
     }
 
     @GetMapping("/user")
-    public ModelAndView listCars() {
+    public ModelAndView listCars(ModelAndView modelAndView) {
         List<User> users = userService.getUsers();
-        ModelAndView modelAndView = new ModelAndView("admin-list-users");
+        modelAndView.setViewName("admin-list-users");
         modelAndView.addObject("users", users);
         return modelAndView;
     }
 
     @GetMapping("/showForm")
-    public ModelAndView showFormForAdd() {
+    public ModelAndView showFormForAdd(ModelAndView modelAndView) {
         User user = new User();
-        ModelAndView modelAndView = new ModelAndView("admin-user-form");
-        modelAndView.addObject(user);
+        modelAndView.setViewName("admin-user-form");
+        modelAndView.addObject("user", user);
         return modelAndView;
     }
 
@@ -45,10 +45,10 @@ public class AdminUserController {
     }
 
     @GetMapping("/updateForm")
-    public ModelAndView showFormForUpdate(@RequestParam("userId") long id) {
+    public ModelAndView showFormForUpdate(@RequestParam("userId") long id, ModelAndView modelAndView) {
         User user = userService.getUser(id);
-        ModelAndView modelAndView = new ModelAndView("admin-user-form");
-        modelAndView.addObject(user);
+        modelAndView.setViewName("admin-user-form");
+        modelAndView.addObject("user", user);
         return modelAndView;
     }
 
