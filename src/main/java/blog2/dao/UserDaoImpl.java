@@ -52,4 +52,28 @@ public class UserDaoImpl implements UserDao {
         session.delete(user);
     }
 
+    @Override
+    public User findByEmail(String email) {
+        Session session = sessionFactory.getCurrentSession();
+        List<User> user = session.createQuery("SELECT u FROM User u WHERE u.email = :email", User.class)
+                .setParameter("email", email).list();
+        session.close();
+        if (user.isEmpty()) {
+            return null;
+        }
+        return user.get(0);
+    }
+
+    @Override
+    public User findByName(String username) {
+        Session session = sessionFactory.getCurrentSession();
+        List<User> user = session.createQuery("SELECT u FROM User u WHERE u.username = :username", User.class)
+                .setParameter("username", username).list();
+        session.close();
+        if (user.isEmpty()) {
+            return null;
+        }
+        return user.get(0);
+    }
+
 }
