@@ -29,7 +29,7 @@
                     <div class="form-group">
                         <label for="name" class="col-md-3 control-label">Name</label>
                         <div class="col-md-9">
-                            <form:input path="name" cssClass="form-control"/>
+                            <form:input path="username" cssClass="form-control"/>
                         </div>
                     </div>
 

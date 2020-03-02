@@ -3,6 +3,7 @@ package blog2.dao;
 import blog2.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.NativeQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -65,10 +66,11 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User findByName(String username) {
+    public User findByUsername(String username) {
         Session session = sessionFactory.getCurrentSession();
-        List<User> user = session.createQuery("SELECT u FROM User u WHERE u.username = :username", User.class)
-                .setParameter("username", username).list();
+        NativeQuery sqlQuery = session.createSQLQuery("SELECT * FROM users WHERE users.username = :username");
+        sqlQuery.setParameter("username", username).list();
+        List<User> user = sqlQuery.list();
         session.close();
         if (user.isEmpty()) {
             return null;

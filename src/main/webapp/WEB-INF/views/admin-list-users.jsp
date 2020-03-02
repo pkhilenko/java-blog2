@@ -44,7 +44,7 @@
                             <c:param name="userId" value="${user.id}" />
                         </c:url>
                         <tr>
-                            <td>${user.name}</td>
+                            <td>${user.username}</td>
                             <td>${user.email}</td>
                             <td>${user.country}</td>
                             <td>

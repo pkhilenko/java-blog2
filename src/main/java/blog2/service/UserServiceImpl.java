@@ -3,13 +3,16 @@ package blog2.service;
 import blog2.dao.UserDao;
 import blog2.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService, UserDetailsService {
     private UserDao userDao;
 
     @Autowired
@@ -47,9 +50,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findByName(String username) {
-        return userDao.findByName(username);
+    @Transactional
+    public User findByUsername(String username) {
+        return  userDao.findByUsername(username);
     }
 
 
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = findByUsername(username);
+        if (user == null) {
+            throw  new UsernameNotFoundException("User not found");
+        }
+        return user;
+    }
 }

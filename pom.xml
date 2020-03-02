@@ -20,7 +20,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>5.2.3.RELEASE</version>
+            <version>5.2.2.RELEASE</version>
         </dependency>
 
         <dependency>
@@ -90,6 +90,7 @@
             <artifactId>spring-security-taglibs</artifactId>
             <version>5.2.2.RELEASE</version>
         </dependency>
+
     </dependencies>
 
     <build>
