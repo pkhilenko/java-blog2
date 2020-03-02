@@ -70,7 +70,6 @@ public class UserDaoImpl implements UserDao {
         Session session = sessionFactory.getCurrentSession();
         List<User> user = session.createQuery("SELECT u FROM User u WHERE u.username = :username", User.class)
                 .setParameter("username", username).list();
-        session.close();
         if (user.isEmpty()) {
             return null;
         }
