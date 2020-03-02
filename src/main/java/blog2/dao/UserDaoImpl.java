@@ -68,9 +68,8 @@ public class UserDaoImpl implements UserDao {
     @Override
     public User findByUsername(String username) {
         Session session = sessionFactory.getCurrentSession();
-        NativeQuery sqlQuery = session.createSQLQuery("SELECT * FROM users WHERE users.username = :username");
-        sqlQuery.setParameter("username", username).list();
-        List<User> user = sqlQuery.list();
+        List<User> user = session.createQuery("SELECT u FROM User u WHERE u.username = :username", User.class)
+                .setParameter("username", username).list();
         session.close();
         if (user.isEmpty()) {
             return null;
