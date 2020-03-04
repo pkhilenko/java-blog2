@@ -1,4 +1,4 @@
-package blog2.model;
+package web.model;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -27,8 +27,8 @@ public class User implements UserDetails {
     @Column(name = "country")
     private String country;
 
-    @Column(name = "active")
-    private boolean active;
+    @Column(name = "active", nullable = false, columnDefinition="bit default 1")
+    private boolean active = true;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))

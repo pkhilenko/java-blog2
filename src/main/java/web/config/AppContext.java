@@ -1,4 +1,4 @@
-package blog2.config;
+package web.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -28,7 +28,7 @@ public class AppContext {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan("blog2");
+        sessionFactory.setPackagesToScan("web");
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
     }

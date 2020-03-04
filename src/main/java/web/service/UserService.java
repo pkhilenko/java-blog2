@@ -1,6 +1,6 @@
-package blog2.service;
+package web.service;
 
-import blog2.model.User;
+import web.model.User;
 
 import java.util.List;
 

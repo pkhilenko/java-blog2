@@ -1,4 +1,4 @@
-package blog2.controller;
+package web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

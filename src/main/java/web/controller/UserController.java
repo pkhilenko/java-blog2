@@ -1,7 +1,7 @@
-package blog2.controller;
+package web.controller;
 
-import blog2.model.User;
-import blog2.service.UserService;
+import web.model.User;
+import web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

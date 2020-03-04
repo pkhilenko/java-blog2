@@ -1,4 +1,4 @@
-package blog2.model;
+package web.model;
 
 import org.springframework.security.core.GrantedAuthority;
 

@@ -1,12 +1,11 @@
-package blog2.config;
+package web.config;
 
-import blog2.config.handler.LoginSuccessHandler;
-import blog2.service.UserService;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import web.config.handler.LoginSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -17,6 +16,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
     private UserDetailsService userService;
 
     @Autowired
@@ -26,8 +26,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-         auth.userDetailsService((UserDetailsService) userService)
+         auth.userDetailsService(userService)
                 .passwordEncoder(NoOpPasswordEncoder.getInstance());
+
+//        auth.inMemoryAuthentication()
+//                .withUser("ADMIN").password(passwordEncoder().encode("ADMIN")).roles("ADMIN")
+//                .and()
+//                .withUser("USER").password(passwordEncoder().encode("USER")).roles("USER");
     }
 
     @Override
@@ -61,8 +66,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //страницы аутентификаци доступна всем
                 .antMatchers("/login").anonymous()
                 // защищенные URL
-                .antMatchers("/hello").access("hasAnyRole('ADMIN')").anyRequest().authenticated()
-//                .antMatchers("/hello", "/user").access("hasAnyRole('USER')").anyRequest().authenticated()
+                .antMatchers("admin/**", "hello", "user").hasRole("ADMIN")
+//                .antMatchers("user").access("hasRole('USER')")
+//                .antMatchers("admin/**").access("hasRole('ADMIN')")
+//                .antMatchers("hello", "user").hasRole("USER")
+                .anyRequest().authenticated()
+//
         ;
     }
 

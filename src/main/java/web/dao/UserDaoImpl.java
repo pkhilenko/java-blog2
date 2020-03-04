@@ -1,9 +1,8 @@
-package blog2.dao;
+package web.dao;
 
-import blog2.model.User;
+import web.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.NativeQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
