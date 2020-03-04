@@ -25,25 +25,16 @@
         <div class="panel panel-info">
             <div class="panel-heading">
                 <div class="panel-title">
-                    <h2>Users</h2>
+                    <h2>User ${user.username}</h2>
                 </div>
             </div>
             <div class="panel-body">
-                <table class="table table-striped table-bordered">
-                    <tr>
-                        <th>name</th>
-                        <th>email</th>
-                        <th>country</th>
-                    </tr>
-
-                    <c:forEach var="user" items="${users}">
-                        <tr>
-                            <td>${user.username}</td>
-                            <td>${user.email}</td>
-                            <td>${user.country}</td>
-                        </tr>
-                    </c:forEach>
-                </table>
+                <ul>
+                    <li>email ${user.email}</li>
+                    <li>country ${user.country}</li>
+                    <li>roles ${user.roles}</li>
+                    <li>active ${user.active}</li>
+                </ul>
             </div>
         </div>
     </div>

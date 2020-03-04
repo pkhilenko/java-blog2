@@ -15,6 +15,10 @@
 </head>
 
 <body>
+<header>
+    <jsp:include page="logout.jsp"/>
+</header>
+
 <div class="container">
     <div class="col-md-offset-2 col-md-7">
         <h2 class="text-center">User</h2>

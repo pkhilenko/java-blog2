@@ -1,6 +1,8 @@
 package web.controller;
 
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import web.model.User;
 import web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,14 @@ public class UserController {
         List<User> users = userService.getUsers();
         modelAndView.setViewName("list-users");
         modelAndView.addObject("users", users);
+        return modelAndView;
+    }
+
+    @GetMapping("/user/{name}")
+    public ModelAndView userEditForm(@PathVariable String name, ModelAndView modelAndView) {
+        User user = userService.findByUsername(name);
+        modelAndView.setViewName("user-details");
+        modelAndView.addObject("user", user);
         return modelAndView;
     }
 
