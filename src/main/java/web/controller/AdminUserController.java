@@ -1,5 +1,6 @@
 package web.controller;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import web.model.User;
 import web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/admin")
+@PreAuthorize("hasAuthority('ADMIN')")
 public class AdminUserController {
 
 

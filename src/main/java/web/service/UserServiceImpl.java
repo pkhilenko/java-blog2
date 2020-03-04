@@ -65,11 +65,10 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
        User user = findByUsername(username);
 
-        if (user == null) {
-            throw new UsernameNotFoundException("User not found");
-        }
-
-        return user;
+        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
+        user.getRoles().forEach(role -> grantedAuthorities.add(new SimpleGrantedAuthority(role.getAuthority())));
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
+                grantedAuthorities);
 
     }
 }

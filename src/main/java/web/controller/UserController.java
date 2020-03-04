@@ -1,5 +1,6 @@
 package web.controller;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import web.model.User;
 import web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
+@PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
 public class UserController {
     private UserService userService;
 
