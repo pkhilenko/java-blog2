@@ -15,7 +15,7 @@
 
 <body>
 <header>
-    <jsp:include page="logout.jsp"/>
+    <jsp:include page="navbar.jsp"/>
 </header>
 
 <div class="container">

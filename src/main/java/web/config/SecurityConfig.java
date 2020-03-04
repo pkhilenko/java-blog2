@@ -30,52 +30,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
          auth.userDetailsService(userService)
                 .passwordEncoder(NoOpPasswordEncoder.getInstance());
-
-//        auth.inMemoryAuthentication()
-//                .withUser("ADMIN").password(passwordEncoder().encode("ADMIN")).roles("ADMIN")
-//                .and()
-//                .withUser("USER").password(passwordEncoder().encode("USER")).roles("USER");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.formLogin()
-                // указываем страницу с формой логина
                 .loginPage("/login")
-                //указываем логику обработки при логине
                 .successHandler(new LoginSuccessHandler())
-                // указываем action с формы логина
                 .loginProcessingUrl("/login")
-                // Указываем параметры логина и пароля с формы логина
                 .usernameParameter("j_username")
-                .passwordParameter("j_password")
-                // даем доступ к форме логина всем
-                .permitAll();
+                .passwordParameter("j_password");
 
         http.logout()
-                // разрешаем делать логаут всем
                 .permitAll()
-                // указываем URL логаута
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                // указываем URL при удачном логауте
                 .logoutSuccessUrl("/login?logout")
-                //выклчаем кроссдоменную секьюрность (на этапе обучения неважна)
                 .and().csrf().disable();
 
         http
-                // делаем страницу регистрации недоступной для авторизированных пользователей
                 .authorizeRequests()
-                //страницы аутентификаци доступна всем
                 .antMatchers("/login").anonymous()
-                // защищенные URL
-//                .antMatchers("admin/**", "hello", "user").hasRole("ADMIN")
-//                .antMatchers("user").access("hasRole('USER')")
-//                .antMatchers("/admin/**").access("hasRole('ADMIN')")
-//                .antMatchers("admin/**").access("hasRole('ADMIN')")
-//                .antMatchers("hello", "user").hasRole("USER")
-                .anyRequest().authenticated()
-//
-        ;
+                .anyRequest().authenticated();
     }
 
     @Bean

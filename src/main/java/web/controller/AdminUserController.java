@@ -15,7 +15,6 @@ import java.util.List;
 @PreAuthorize("hasAuthority('ADMIN')")
 public class AdminUserController {
 
-
     private UserService userService;
 
     @Autowired

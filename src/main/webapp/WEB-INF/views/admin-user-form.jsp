@@ -16,7 +16,7 @@
 
 <body>
 <header>
-    <jsp:include page="logout.jsp"/>
+    <jsp:include page="navbar.jsp"/>
 </header>
 
 <div class="container">
@@ -31,7 +31,7 @@
                     <form:hidden path="id"/>
 
                     <div class="form-group">
-                        <label for="name" class="col-md-3 control-label">Name</label>
+                        <label for="username" class="col-md-3 control-label">Name</label>
                         <div class="col-md-9">
                             <form:input path="username" cssClass="form-control"/>
                         </div>

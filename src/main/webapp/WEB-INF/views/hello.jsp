@@ -2,7 +2,7 @@
 <html>
 <body>
 <header>
-    <jsp:include page="logout.jsp"/>
+    <jsp:include page="navbar.jsp"/>
 </header>
 
 <c:forEach var="msq" items="${messages}">
